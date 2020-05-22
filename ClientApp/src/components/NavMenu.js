@@ -57,6 +57,21 @@ export class NavMenu extends Component {
                     Bio
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/poetry">
+                    Poetry
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/shorinji">
+                    Shorinji Kempo
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/contact">
+                    Contact
+                  </NavLink>
+                </NavItem>
               </ul>
             </Collapse>
           </Container>
