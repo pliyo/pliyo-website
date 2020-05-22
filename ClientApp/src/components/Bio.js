@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Bio() {
+const Bio = (props) => {
   return (
     <div>
       <h1>Who is Juanjo Cerezuela?</h1>
@@ -10,4 +10,6 @@ export default function Bio() {
       </p>
     </div>
   );
-}
+};
+
+export default Bio;

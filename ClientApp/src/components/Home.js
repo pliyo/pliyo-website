@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Emoji from './Emoji';
 
-export default function Home() {
+const Home = (props) => {
   return (
     <div>
-      <h1>Welcome to Pliyo's Spaceship! :rocket:</h1>
+      <h1>
+        Welcome to Pliyo's Spaceship! <Emoji symbol="🚀" label="rocket" />
+      </h1>
     </div>
   );
-}
+};
+
+export default Home;
