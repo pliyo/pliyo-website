@@ -3,7 +3,7 @@
 1. Functional components vs Class components.
    -> I opted for functional components, as class components are now oriented to Error handling. It seems functional components will make my website future proof when suspense comes.
    I'll extend on this in the future.
-2. `react-router-dom` uses `react-router` underneath, and it's oriented for webdevelopment.
+2. `react-router-dom` uses `react-router` underneath, and it's oriented for web development.
 3. Error: `A router may have only one child element`:
    This happened to me when I was using
 
