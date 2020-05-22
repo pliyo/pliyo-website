@@ -1,18 +1,24 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router';
+import React from 'react';
 import { Layout } from './components/Layout';
-import { Home } from './components/Home';
+import Home from './components/Home';
+import Bio from './components/Bio';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 import './custom.css';
 
-export default class App extends Component {
-  static displayName = App.name;
+let routes = (
+  <Switch>
+    <Route exact path="/" component={Home}></Route>
+    <Route path="/bio" component={Bio}></Route>
+  </Switch>
+);
 
-  render() {
-    return (
-      <Layout>
-        <Route exact path="/" component={Home} />
-      </Layout>
-    );
-  }
+export default function App() {
+  return (
+    <Layout>
+      <div id="App">
+        <div>{routes}</div>
+      </div>
+    </Layout>
+  );
 }
