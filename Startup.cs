@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 
 namespace Pliyo
@@ -19,7 +22,14 @@ namespace Pliyo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddHealthChecks()
+                .AddCheck("Health", () =>
+                     HealthCheckResult.Healthy("healthy af!"), tags: new[] { "health" });
+            services.AddHealthChecks()
+                .AddCheck("Ready", () =>
+                    HealthCheckResult.Healthy("ready to roll"), tags: new[] { "ready" }
+                );
+            services.AddApplicationInsightsTelemetry();
             services.AddControllersWithViews();
 
             // In production, the React files will be served from this directory
@@ -56,14 +66,22 @@ namespace Pliyo
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
+            app.UseEndpoints(endpoints =>
             {
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
+                endpoints.MapHealthChecks("/status/ready", new HealthCheckOptions()
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
+                    Predicate = (check) => check.Tags.Contains("ready"),
+                    ResponseWriter = async (context, healthReport) =>
+                    {
+                        await context.Response.WriteAsync("ready!");
+                    }
+                });
+
+                endpoints.MapHealthChecks("/status/health", new HealthCheckOptions()
+                {
+                    Predicate = (check) => check.Tags.Contains("health")
+                });
+                endpoints.MapDefaultControllerRoute().RequireAuthorization();
             });
         }
     }
