@@ -8,10 +8,11 @@ const Bio = (props) => {
       <img
               src={pliyo}
               alt="pliyo wearing a cowboy hat with coney island as a background"
-      />
+          />
+          <p>
         Juan Jose Guerrero Cerezuela, for short Juanjo Cerezuela, is a spaniard
         living in the UK
-      </p>
+        </p>
     </div>
   );
 };
