@@ -9,7 +9,7 @@ on: push
 #   AZURE_CREDENTIALS, REGISTRY_USERNAME, REGISTRY_PASSWORD, REGISTRY_URL
 # 2. Change these variables for your configuration:
 env:
-  AZURE_WEBAPP_NAME: PliyoWeb # set this to your application's name
+  AZURE_WEBAPP_NAME: pliyoweb # set this to your application's name
 # AZURE_RESOURCE_GROUP: ActionsDemo   # set this to your Azure Resource group's name - Needed only if you are provisioning the app in the workflow
 # AZURE_APP_PLAN: ActionPlan  # set this to your App service plan's name - Needed only if you are provisioning the app in the workflow
 
@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-          docker build -t ${{ secrets.REGISTRY_URL }}/pliyoweb:${{ github.sha }} .
+          docker build -t ${{ secrets.REGISTRY_URL }}/${{ env.AZURE_WEBAPP_NAME }}:${{ github.sha }} .
           docker push ${{ secrets.REGISTRY_URL }}/pliyoweb:${{ github.sha }}
       - name: ACR authentication
         uses: azure/docker-login@v1
@@ -43,8 +43,8 @@ jobs:
           login-server: ${{ secrets.REGISTRY_URL }} # set secret with Container Registry URL, example : xyz.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-      # - name: 'Deploy to Azure Web App for Container'
-      #   uses: azure/webapps-deploy@v2
-      #   with:
-      #     app-name: ${{ env.AZURE_WEBAPP_NAME }}
-      #     images: ${{ env.CONTAINER_REGISTRY }}/pliyoweb:${{ github.sha }}
+      - name: 'Deploy to Azure Web App for Container'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          images: ${{ env.CONTAINER_REGISTRY }}/${{ env.AZURE_WEBAPP_NAME }}:${{ github.sha }}
