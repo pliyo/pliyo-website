@@ -34,9 +34,9 @@ jobs:
           login-server: ${{ secrets.REGISTRY_URL }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-      - run:
+      - run: |
           docker build -t pliyoweb:${{ github.sha }} .
-          # docker push pliyoweb:${{ github.sha }}
+          docker push pliyoweb:${{ github.sha }}
       - name: ACR authentication
         uses: azure/docker-login@v1
         with:
