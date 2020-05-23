@@ -34,17 +34,17 @@ jobs:
           login-server: ${{ secrets.REGISTRY_URL }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-      - run: |
-          docker build -t pliyoweb:${{ github.sha }}
-          docker push pliyoweb:${{ github.sha }}
+      - run:
+          docker build -t pliyoweb:${{ github.sha }} .
+          # docker push pliyoweb:${{ github.sha }}
       - name: ACR authentication
         uses: azure/docker-login@v1
         with:
           login-server: ${{ secrets.REGISTRY_URL }} # set secret with Container Registry URL, example : xyz.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-        # - name: "Deploy to Azure Web App for Container"
-        #   uses: azure/webapps-deploy@v2
-        #   with:
-        #     app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        #     images: ${{ env.CONTAINER_REGISTRY }}/pliyoweb:${{ github.sha }}
+      # - name: 'Deploy to Azure Web App for Container'
+      #   uses: azure/webapps-deploy@v2
+      #   with:
+      #     app-name: ${{ env.AZURE_WEBAPP_NAME }}
+      #     images: ${{ env.CONTAINER_REGISTRY }}/pliyoweb:${{ github.sha }}
