@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import LaLuz from '../images/laluz.png';
 import LaVida from '../images/lavidapordelante.png';
 import PliyoSenpai from '../images/pliyosenpai.jpg';
+import PliyoBooks from '../images/pliyobooks.jpg';
 
 const useStyles = makeStyles({
   root: {
@@ -119,10 +120,17 @@ const Poetry = (props) => {
       <h1>Poetry</h1>
       <p>
         When I was back in Spain I used to write poetry in spanish.
-        <br />I still do, but I'm not planning on writing any book any time
-        soon. These are some of the books I have participated in:
-        I also wrote poems for "Antologia tras las rejas"
+        <br />I still do as a way of healing, I find poetry is a fantastic way
+        to understand myself and unwind from the noise of routine, but I'm not
+        planning on writing any book any time soon.
+        <br />
+        <img src={PliyoBooks} alt="Pliyo reading books in a library" />
+        <br />
+        These are some of the books I participated in the past:
       </p>
+
+      <br />
+      <br />
       <LaLuzMasBella></LaLuzMasBella>
       <br />
       <LaVidaPorDelante></LaVidaPorDelante>
