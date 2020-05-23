@@ -10,7 +10,7 @@ on: push
 # 2. Change these variables for your configuration:
 env:
   AZURE_WEBAPP_NAME: pliyesco # set this to your application's name
-  DOCKER_IMAGE_NAME: ${{ secrets.REGISTRY_URL }}/${{ env.AZURE_WEBAPP_NAME }}:${{ github.sha }}
+  DOCKER_IMAGE_NAME: ${{ secrets.REGISTRY_URL }}/pliyesco:${{ github.sha }}
 
 jobs:
   build-and-deploy-to-dev:
