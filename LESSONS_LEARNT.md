@@ -20,3 +20,13 @@ The issue is that path="/" takes everything. To fix it I started using switch pl
 
 4. To use emojis you can copy and paste, but I defined my own component so we can also use alt text and make it ready for accessibility.
 5. To start deploying to Azure check [here](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md)
+   It should be a json, (so remember to remove the comma at the end), such as:
+
+```
+ {
+    "clientId": "(GUID)",
+    "clientSecret": "(GUID)",
+    "subscriptionId": "(GUID)",
+    "tenantId": "(GUID)"
+}
+```
