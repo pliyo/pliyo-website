@@ -33,7 +33,7 @@ jobs:
         with:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-          repository: ${{ secrets.REGISTRY_URL }}/pliyoweb
+          repository: ${{ secrets.REGISTRY_URL }}
           tags: latest
       - name: ACR authentication
         uses: azure/docker-login@v1
