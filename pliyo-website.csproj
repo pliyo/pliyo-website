@@ -8,6 +8,7 @@
     <SpaRoot>ClientApp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
     <RootNamespace>Pliyo</RootNamespace>
+    <AssemblyName>Pliyo</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
