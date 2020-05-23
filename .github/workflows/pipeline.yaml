@@ -28,8 +28,8 @@ jobs:
       #         azcliversion: latest
       #         inlineScript: |
       #           az webapp create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --plan ${{ env.AZURE_APP_PLAN }} --name ${{ env.AZURE_WEBAPP_NAME }}  -i nginx
-      - uses: azure/docker-login@v1
       - name: Publish to Registry
+      - uses: azure/docker-login@v1
         with:
           login-server: ${{ secrets.REGISTRY_URL }}
           username: ${{ secrets.REGISTRY_USERNAME }}
