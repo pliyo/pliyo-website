@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-          docker build - t ${{ secrets.REGISTRY_URL }}/pliyoweb:${{ github.sha }}
+          docker build -t ${{ secrets.REGISTRY_URL }}/pliyoweb:${{ github.sha }}
           docker push ${{ secrets.REGISTRY_URL }}/pliyoweb:${{ github.sha }}
       - name: ACR authentication
         uses: azure/docker-login@v1
