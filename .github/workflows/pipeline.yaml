@@ -13,7 +13,7 @@ env:
   DOCKER_IMAGE_NAME: ${{ secrets.REGISTRY_URL }}/pliyesco:${{ github.sha }}
 
 jobs:
-  build-and-deploy-to-dev:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
