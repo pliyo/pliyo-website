@@ -10,6 +10,7 @@ let routes = (
   <Switch>
     <Route exact path="/" component={Home}></Route>
     <Route path="/bio" component={Bio}></Route>
+    <Route path="/poetry" component={Poetry}></Route>
   </Switch>
 );
 
