@@ -30,3 +30,5 @@ The issue is that path="/" takes everything. To fix it I started using switch pl
     "tenantId": "(GUID)"
 }
 ```
+
+6. The existing github action has a type where it says `docker run .t [imagename]` it should be `docker run -t [imagename] .`

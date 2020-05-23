@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
+using Pliyo.Models;
+using Pliyo.StartupHelpers;
 
 namespace Pliyo
 {
@@ -37,6 +39,10 @@ namespace Pliyo
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddScoped<IndexWriter>();
+            services.AddScoped<FileService>();
+            services.AddScoped<TemplateReplacement>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,6 +88,27 @@ namespace Pliyo
                     Predicate = (check) => check.Tags.Contains("health")
                 });
                 endpoints.MapDefaultControllerRoute().RequireAuthorization();
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+                else
+                {
+                    var indexWriter = app.ApplicationServices.GetRequiredService<IndexWriter>();
+                    var clientConfig = new ClientConfig
+                    {
+                        ApplicationInsightsInstrumentationKey = Configuration["ApplicationInsights:InstrumentationKey"],
+                    };
+
+                    indexWriter.CreateNewIndex(spa.Options.DefaultPage, clientConfig);
+                    spa.Options.DefaultPage = IndexWriter.NEW_INDEX_NAME;
+                }
             });
         }
     }
