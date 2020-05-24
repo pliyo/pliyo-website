@@ -65,10 +65,10 @@ export function Banderin() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            La luz más bella
+            Invoco la tormenta
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Yo invoco la tormenta
+            Banderin con poemas de Pliyo Senpai
           </Typography>
         </CardContent>
       </CardActionArea>
