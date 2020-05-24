@@ -11,6 +11,8 @@ import LaLuz from '../images/laluz.png';
 import LaVida from '../images/lavidapordelante.png';
 import PliyoSenpai from '../images/pliyosenpai.jpg';
 import PliyoBooks from '../images/pliyobooks.jpg';
+import Ciudad from '../images/ciudadceleste.jpg';
+import Versos from '../images/versos.jpg';
 
 const useStyles = makeStyles({
   root: {
@@ -68,13 +70,76 @@ export function Banderin() {
             Invoco la tormenta
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Banderin con poemas de Pliyo Senpai
+            Con el nombre de Pliyo Senpai, Juanjo empieza su andadura poetica en
+            los banderines del zaguan
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          <a href="http://losbanderines.blogspot.com/search?updated-max=2013-01-28T13:58:00-08:00&max-results=499&start=17&by-date=false">
+          <a href="http://losbanderines.blogspot.com/2011/11/banderin-81-pliyo-senpai-poemas-e.html">
+            Learn More
+          </a>
+        </Button>
+      </CardActions>
+    </Card>
+  );
+}
+
+export function VersosQueAbrazan() {
+  const classes = useStyles();
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={Versos}
+          title="Versos que abrazan"
+          alt="Versos que abrazan"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            Versos que abrazan
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Antologia contra la violencia de genero (2017)
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          <a href="https://velozquietuddelcentro.blogspot.com/2017/12/versos-que-abrazan-poesia-contra-la.html">
+            Learn More
+          </a>
+        </Button>
+      </CardActions>
+    </Card>
+  );
+}
+
+export function CiudadCeleste() {
+  const classes = useStyles();
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={Ciudad}
+          title="Ciudad celeste"
+          alt="Ciudad celeste"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            Ciudad celeste
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Antología homenaje a valente (2016)
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          <a href="http://dogmalibros.com/index.html/wordpressiea/producto/ciudad-celeste-homenaje-a-valente/">
             Learn More
           </a>
         </Button>
@@ -126,16 +191,19 @@ const Poetry = (props) => {
         <br />
         <img src={PliyoBooks} alt="Pliyo reading books in a library" />
         <br />
-        These are some of the books I participated in the past:
+        <br />
+        <br />
+        <h5>These are some of the books I participated in the past:</h5>
       </p>
-
+      <VersosQueAbrazan />
       <br />
+      <CiudadCeleste />
       <br />
-      <LaLuzMasBella></LaLuzMasBella>
+      <LaLuzMasBella />
       <br />
-      <LaVidaPorDelante></LaVidaPorDelante>
+      <LaVidaPorDelante />
       <br />
-      <Banderin></Banderin>
+      <Banderin />
     </div>
   );
 };
